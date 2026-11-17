@@ -2,7 +2,7 @@
 
 **给经常评审和修改需求的产品团队用的本地 AI 工作流。** 每轮评审之后，可以查清哪条规则生效、谁确认了这次变化、哪些页面、流程和 PRD 还待更新。
 
-**[下载 ZIP，解压使用](https://github.com/luoss33/product-governance-workflow/releases/latest/download/product-governance-workflow.zip)** · [快速上手](docs/quickstart.md) · [看一次需求变更](<examples/活动报名取消/演练产物.md>)
+**[下载 ZIP，解压使用](https://github.com/luoss33/product-governance-workflow/releases/latest/download/product-governance-workflow.zip)** · [快速上手](docs/quickstart.md) · [看确认前后对照](#活动报名取消示例)
 
 ![从原始来源、人工决策到现行规范和交付物，Wiki 用来查背景和历史](docs/images/governance-chain.png)
 
@@ -28,10 +28,65 @@
 
 第一次确认活动开始前可取消。复评把截止点提前到距活动开始至少 24 小时。旧决策仍可查，现行规范和页面方案按新的时间边界同步，页面方案待评审。[查看两轮输出](<examples/活动报名取消/演练产物.md>) · [跟做案例](<examples/活动报名取消/README.md>)
 
+<details>
+<summary><strong>展开查看确认前后的文件与状态</strong></summary>
+
+| 阶段 | 工作区里看到什么 |
+| --- | --- |
+| 第一轮确认前 | AI 对比「开始前」和「至少提前一天」两个候选截止点，给出推荐和要审阅的完整规则。 |
+| 第一轮确认后 | 决策保存确认依据，现行规范记录「活动开始前可取消」，页面方案按这条规则更新并进入待评审。 |
+| 第二轮改截止点 | 原规则标为已替代，现行规范采用「距开始至少 24 小时」。页面方案先标待同步，按新边界更新并核对后标为已同步。 |
+
+[查看两轮文件摘录和场景结果](<examples/活动报名取消/演练产物.md>)
+
+</details>
+
 ## 在本地试用
 
 1. 下载并解压 ZIP。
 2. 在能读写本地文件的 AI 工具中打开包含 `AGENTS.md` 的文件夹。
 3. 把第一份纪要放到 `01、来源`，请 AI 先读 `AGENTS.md` 并给出方案。也可以从随包的活动报名案例开始。
 
-包里有[产品变更工作流](.agents/skills/product-change-workflow/SKILL.md)、[业务事实治理](.agents/skills/business-spec-manager/SKILL.md)两份 AI 指引，以及空白登记表、流程和页面模板。[快速上手](docs/quickstart.md) · [MIT 许可证](LICENSE)
+把这段话发给已经打开工作区的 AI，可以直接试第一份纪要。
+
+```text
+先读工作区根目录的 AGENTS.md。根据 examples/活动报名取消/会议纪要.md，
+给出本次变化、一个推荐、完整的待确认规则和受影响的交付物。我先看方案。
+```
+
+<details>
+<summary><strong>查看 ZIP 解压后的主要目录</strong></summary>
+
+```text
+product-governance-workflow/
+├── AGENTS.md              # AI 工作入口
+├── 00、工作台/            # 规范索引、资产登记和模板
+├── 01、来源/              # 会议纪要、调研和评审材料
+├── 02、决策/              # 人工确认记录
+├── 03、当前规范/          # 各主题的现行规则
+├── 04、资产/              # 流程、页面等交付物
+├── 05、Wiki/              # 项目背景和阅读导航
+├── 99、历史/              # 旧版档案
+├── .agents/skills/        # 产品变更和业务事实治理指引
+└── examples/活动报名取消/  # 两轮示例和产物
+```
+
+</details>
+
+包里有[产品变更工作流](.agents/skills/product-change-workflow/SKILL.md)、[业务事实治理](.agents/skills/business-spec-manager/SKILL.md)两份 AI 指引，以及空白登记表、流程和页面模板。[快速上手](docs/quickstart.md)
+
+## 常见问题
+
+**和直接给 AI 一段提示词有什么区别？**
+
+提示词告诉 AI 怎么做。工作区还保存原始资料、人工确认、现行规范和交付物同步状态，换个会话能沿着这些记录继续。
+
+**每次改动都要改现行规范吗？**
+
+文案、样式等纯表达调整可以直接处理目标文件。业务规则经确认发生变化时，再更新对应主题的现行规范并核对受影响的资产。
+
+**下载包里可以直接用什么？**
+
+两份 AI 指引、空白登记表、Markdown 流程和页面方案模板，以及可复跑的虚构案例。原型和 PRD 可以作为下游交付物，按确认范围更新。
+
+[MIT 许可证](LICENSE)
