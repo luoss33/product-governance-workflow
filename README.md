@@ -6,6 +6,8 @@
 
 [下载本地工作区 ZIP](https://github.com/luoss33/product-governance-workflow/releases/latest/download/product-governance-workflow.zip) · [快速上手](docs/quickstart.md) · [跟做完整示例](<examples/活动报名取消/README.md>)
 
+![来源、决策、现行规范和交付物形成当前规则主链，Wiki 用于查询背景和历史](docs/images/governance-chain.png)
+
 ## 从自增长知识库到产品治理
 
 我的起点是卡帕西的 LLM Wiki。开完会，把纪要、调研和评审材料放进去，AI 会整理要点、更新主题页、连上相关资料。刚开始很顺，回查方便，换个会话也能从已有资料接着做。[卡帕西的 LLM Wiki 原文](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
@@ -34,16 +36,12 @@
 
 ## 人负责确认，AI 跟进变更
 
-![产品规则从会议材料到 AI 方案、人工确认，再进入决策、现行规范和受影响资产](docs/images/workflow.png)
-
 - **人**定目标、做取舍，确认完整的业务规则和本批同步范围。
 - **AI**对比现状、给出推荐、指出受影响的交付物。确认后记录原话和依据，更新现行规范，按授权范围同步资产并核对实际场景。
 
 锁定资产的授权要指向具体文件和改动，正式交付验收要指向具体资产、版本和范围。[治理协议](<00、工作台/治理协议.md>)
 
 ## 三步开始
-
-![下载 ZIP 后在本地打开工作区，从 AGENTS.md 开始，把第一份会议纪要交给 AI](docs/images/local-start.png)
 
 下载并解压工作区，在能读取本地文件的 AI 工具里打开包含 `AGENTS.md` 的文件夹，也可以用 Obsidian 查看。把第一份会议纪要放到 `01、来源`，或直接用随包示例试一次。
 
@@ -54,8 +52,6 @@ examples/活动报名取消/会议纪要.md
 ```
 
 ## 试做活动报名取消
-
-![活动报名取消示例，推荐以活动开始时刻为截止点，规则确认后形成决策、现行规范和待评审页面](docs/images/confirmed-example.png)
 
 示例纪要讨论了两个取消截止点。先审 AI 的推荐和时间边界，再确认规则，最后查看决策、现行规范和待评审的页面方案。[打开会议纪要和演练步骤](<examples/活动报名取消/README.md>)
 

@@ -1,10 +1,10 @@
 # 快速上手
 
-![解压工作区、在本地打开文件夹、把会议纪要交给 AI 的三步操作](images/local-start.png)
-
 ## 1. 下载并打开
 
 从[发布页](https://github.com/luoss33/product-governance-workflow/releases/latest)下载 `product-governance-workflow.zip` 并完整解压。把包含 `AGENTS.md` 和 `00、工作台` 的文件夹交给能读取、编辑本地文件的 AI 工具。
+
+![打开包含 AGENTS.md 的工作区，从 01、来源开始放入会议纪要](images/workspace-map.png)
 
 也可以用 Obsidian 把这个目录打开为库，再从普通编辑器查看和修改 Markdown 文件。目录、空白登记表和模板都已准备好。
 
