@@ -140,3 +140,30 @@ test('目录说明和文件夹不能登记为当前规范', (t) => {
   assert.ok(result.failures.some((failure) => failure.includes('主题一') && failure.includes('规范 Markdown 文件')));
   assert.ok(result.failures.some((failure) => failure.includes('主题二') && failure.includes('规范文件不存在')));
 });
+
+test('同表头的多个资产分区都会校验链接', (t) => {
+  const root = createWorkspace(t);
+  const retainedAsset = '04、资产/当前主交付物.md';
+  const transitionAsset = '04、资产/阶段过渡资产.md';
+  writeFile(root, retainedAsset, '# 当前主交付物\n');
+  writeFile(root, transitionAsset, '# 阶段过渡资产\n');
+
+  const headers = '| 资产 ID | 主题 | 资产 | 同步状态 | 交付状态 | 最近同步决策 |';
+  const separator = '| --- | --- | --- | --- | --- | --- |';
+  writeFile(root, '00、工作台/当前资产.md', [
+    headers,
+    separator,
+    '| ART-001 | 社区活动 | [主交付物](../04、资产/当前主交付物.md) | Updated | 草稿 | — |',
+    '',
+    headers,
+    separator,
+    '| ART-002 | 社区活动 | [阶段过渡资产](../04、资产/阶段过渡资产.md) | Dirty | 草稿 | — |',
+    '',
+  ].join('\n'));
+
+  assert.deepEqual(checkWorkspace(root).failures, []);
+  rmSync(path.join(root, transitionAsset));
+
+  const result = checkWorkspace(root);
+  assert.ok(result.failures.some((failure) => failure.includes('阶段过渡资产.md') && failure.includes('链接目标不存在')));
+});

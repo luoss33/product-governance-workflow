@@ -97,6 +97,8 @@ function isSeparatorRow(cells) {
 
 function findRegistryRows(content, headers) {
   const lines = content.split(/\r?\n/);
+  const rows = [];
+  let foundTable = false;
 
   for (let index = 0; index < lines.length - 1; index += 1) {
     if (!isTableLine(lines[index])) continue;
@@ -106,19 +108,18 @@ function findRegistryRows(content, headers) {
       continue;
     }
 
+    foundTable = true;
     const separator = splitTableRow(lines[index + 1]);
     if (!isSeparatorRow(separator) || separator.length !== headers.length) return null;
 
-    const rows = [];
     for (let rowIndex = index + 2; rowIndex < lines.length && isTableLine(lines[rowIndex]); rowIndex += 1) {
       const cells = splitTableRow(lines[rowIndex]);
       if (cells.length !== headers.length) return null;
       rows.push(cells);
     }
-    return rows;
   }
 
-  return null;
+  return foundTable ? rows : null;
 }
 
 function extractMarkdownLinks(text) {
